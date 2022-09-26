@@ -1,0 +1,10 @@
+.selection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.isToggled {
+  background-color: green;
+}

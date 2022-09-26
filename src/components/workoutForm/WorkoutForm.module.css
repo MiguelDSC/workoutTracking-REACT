@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+  border: 1px solid white;
+}
+
+table th {
+  width: 120px;
+  background: #add8e6;
+  padding: 24 0;
+  color: black;
+}

@@ -1,34 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "./App.css";
+import WorkoutForm from "./components/workoutForm/WorkoutForm";
+import Selection from "./components/selection/Selection";
+import { useState } from "react";
+import WorkoutHistory from "./components/workoutHistory/WorkoutHistory";
+import workoutItemType from "./components/selection/workoutItemType";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedWorkout, setSelectedWorkout] = useState("0");
+  const [enableHistory, setEnableHistory] = useState(false);
+  const [history, setHistory] = useState<workoutItemType[]>([
+    {
+      id: "0",
+      excersize_1: "12kg 2, 4, 5",
+      excersize_2: "12kg 2, 4, 5",
+      excersize_3: "12kg 2, 4, 5",
+      excersize_4: "12kg 2, 4, 5",
+      excersize_5: "12kg 2, 4, 5",
+      excersize_6: "12kg 2, 4, 5",
+      excersize_7: "12kg 2, 4, 5",
+      date: "26-9-2022",
+    },
+    {
+      id: "0",
+      excersize_1: "12kg 2, 4, 5",
+      excersize_2: "12kg 2, 4, 5",
+      excersize_3: "12kg 2, 4, 5",
+      excersize_4: "12kg 2, 4, 5",
+      excersize_5: "12kg 2, 4, 5",
+      excersize_6: "12kg 2, 4, 5",
+      excersize_7: "12kg 2, 4, 5",
+      date: "26-9-2022",
+    },
+    {
+      id: "1",
+      excersize_1: "12kg 2, 4, 5",
+      excersize_2: "12kg 2, 4, 5",
+      excersize_3: "12kg 2, 4, 5",
+      excersize_4: "12kg 2, 4, 5",
+      excersize_5: "12kg 2, 4, 5",
+      excersize_6: "12kg 2, 4, 5",
+      excersize_7: "12kg 2, 4, 5",
+      date: "26-9-2022",
+    },
+  ]);
+
+  function getTypeHandler(data: string) {
+    setSelectedWorkout(data);
+  }
+
+  function historyToggler() {
+    setEnableHistory(!enableHistory);
+  }
+
+  function newWorkoutHandler(data: workoutItemType) {
+    setHistory((prevWorkoutList) => {
+      const oldWorkouts = [...prevWorkoutList];
+      oldWorkouts.unshift(data);
+
+      return oldWorkouts;
+    });
+  }
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* selection upper 1, upper 2, lower */}
+      {/* <Selection enableHistory={getTypeHandler} /> */}
+      <h1>Select a Workout</h1>
+      <Selection
+        ToggleEnabled={enableHistory}
+        onToggle={historyToggler}
+        onGetType={getTypeHandler}
+      />
+      {/* {viewingOption && <WorkoutForm type={selectedWorkout} />} */}
+
+      <WorkoutForm onNewWorkout={newWorkoutHandler} type={selectedWorkout} />
+
+      {enableHistory && (
+        <WorkoutHistory type={selectedWorkout} workoutHistory={history} />
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
