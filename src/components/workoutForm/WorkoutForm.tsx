@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import WorkoutTable from "./WorkoutTable";
 import styles from "./WorkoutForm.module.css";
 import workoutItemType from "../selection/workoutItemType";
 import routine from "../Routine";
