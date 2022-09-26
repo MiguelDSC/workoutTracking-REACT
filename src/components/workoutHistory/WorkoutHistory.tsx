@@ -13,7 +13,7 @@ function WorkoutHistory(props: WorkoutHistory) {
   const heading = routine[+props.type];
 
   const filteredHistory = props.workoutHistory.filter(
-    (item) => item.id === props.type
+    (item) => item.type === props.type
   );
 
   let history = (

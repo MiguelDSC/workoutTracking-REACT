@@ -22,7 +22,7 @@ function Selection(props: SelectionProps) {
     <div className={styles.selection}>
       <WorkoutTypeButton passValue={getTypeHandler} value="0" title="Upper 1" />
       <WorkoutTypeButton passValue={getTypeHandler} value="1" title="Upper 2" />
-      <WorkoutTypeButton passValue={getTypeHandler} value="" title="Lower" />
+      <WorkoutTypeButton passValue={getTypeHandler} value="2" title="Lower" />
       {props.ToggleEnabled ? (
         <button className={styles.isToggled} onClick={historyToggler}>
           Toggle History

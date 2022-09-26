@@ -17,6 +17,13 @@ const routine = [
     "Hammer Curls",
     "Tricep Extentions",
   ],
+  [
+    "Squats",
+    "Assisted Pistol Squats",
+    "Romanian Deadlights",
+    "Nordic curls",
+    "Goblin squats",
+  ],
 ];
 
 export default routine;

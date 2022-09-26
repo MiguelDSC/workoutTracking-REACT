@@ -60,7 +60,7 @@ function WorkoutForm(props: workoutFormProps) {
     const currentDate = convertDate();
 
     const newWorkout = {
-      id: props.type,
+      type: props.type,
       ...workout,
       date: currentDate,
     };
@@ -120,6 +120,7 @@ function WorkoutForm(props: workoutFormProps) {
                     onChange={workoutInputHandler}
                   />
                 </td>
+
                 <td>
                   <input
                     name="excersize_5"
@@ -128,22 +129,27 @@ function WorkoutForm(props: workoutFormProps) {
                     onChange={workoutInputHandler}
                   />
                 </td>
-                <td>
-                  <input
-                    name="excersize_6"
-                    type="text"
-                    value={workout.excersize_6}
-                    onChange={workoutInputHandler}
-                  />
-                </td>
-                <td>
-                  <input
-                    name="excersize_7"
-                    type="text"
-                    value={workout.excersize_7}
-                    onChange={workoutInputHandler}
-                  />
-                </td>
+
+                {props.type != "2" && (
+                  <>
+                    <td>
+                      <input
+                        name="excersize_6"
+                        type="text"
+                        value={workout.excersize_6}
+                        onChange={workoutInputHandler}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        name="excersize_7"
+                        type="text"
+                        value={workout.excersize_7}
+                        onChange={workoutInputHandler}
+                      />
+                    </td>
+                  </>
+                )}
               </tr>
             </tbody>
           </table>
