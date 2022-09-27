@@ -1,6 +1,6 @@
 import "./App.css";
 import WorkoutForm from "./components/workoutForm/WorkoutForm";
-import Selection from "./components/selection/Selection";
+import WorkoutTypeSelector from "./components/selection/WorkoutTypeSelector";
 import { useState } from "react";
 import WorkoutHistory from "./components/workoutHistory/WorkoutHistory";
 import WorkoutItemType, {
@@ -17,11 +17,7 @@ function App() {
     placeHolderHistoryList
   );
 
-  const getTypeHandler = (data: number) => {
-    setSelectedWorkout(data);
-  };
-
-  const historyToggler = () => {
+  const toggleHistory = () => {
     setEnableHistory(!enableHistory);
   };
 
@@ -38,10 +34,10 @@ function App() {
     <div className="App">
       {/* selection upper 1, upper 2, lower */}
       <h1>Select a Workout</h1>
-      <Selection
+      <WorkoutTypeSelector
         historyToggleEnabled={enableHistory}
-        onHistoryToggle={historyToggler}
-        onGetType={getTypeHandler}
+        onHistoryToggle={toggleHistory}
+        onChangeWorkout={setSelectedWorkout}
       />
       <WorkoutForm onNewWorkout={newWorkoutHandler} type={selectedWorkout} />
 

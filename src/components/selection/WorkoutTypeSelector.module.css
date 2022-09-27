@@ -10,3 +10,8 @@
   color: black;
   margin: 3px;
 }
+
+.historyToggle:focus {
+  outline: none;
+  border: 0;
+}
