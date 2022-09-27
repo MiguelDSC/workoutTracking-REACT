@@ -1,12 +1,24 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import styles from "./WorkoutForm.module.css";
-import WorkoutItemType from "../selection/workoutItemType";
+import WorkoutItemType, { WorkoutType } from "../selection/workoutItemType";
 import routine from "../Routine";
 
 interface WorkoutFormProps {
-  type: string;
+  type: WorkoutType;
   onNewWorkout: (data: WorkoutItemType) => void;
 }
+
+const convertDate = () => {
+  const date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  // This arrangement can be altered based on how we want the date's format to appear.
+  let currentDate = `${day}-${month}-${year}`;
+  return currentDate;
+};
 
 function WorkoutForm(props: WorkoutFormProps) {
   const [workout, setWorkout] = useState({
@@ -19,18 +31,6 @@ function WorkoutForm(props: WorkoutFormProps) {
     excersize_7: "",
     date: "",
   });
-
-  const convertDate = () => {
-    const date = new Date();
-
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-
-    // This arrangement can be altered based on how we want the date's format to appear.
-    let currentDate = `${day}-${month}-${year}`;
-    return currentDate;
-  };
 
   const workoutInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -58,6 +58,7 @@ function WorkoutForm(props: WorkoutFormProps) {
     event.preventDefault();
 
     const currentDate = convertDate();
+
     const newWorkout = {
       type: props.type,
       ...workout,
@@ -129,7 +130,7 @@ function WorkoutForm(props: WorkoutFormProps) {
                   />
                 </td>
 
-                {props.type != "2" && (
+                {props.type !== WorkoutType.lower && (
                   <>
                     <td>
                       <input

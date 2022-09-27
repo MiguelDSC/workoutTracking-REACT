@@ -8,3 +8,9 @@
 .isToggled {
   background-color: green;
 }
+
+.button {
+  background-color: lightblue;
+  color: black;
+  margin: 3px;
+}

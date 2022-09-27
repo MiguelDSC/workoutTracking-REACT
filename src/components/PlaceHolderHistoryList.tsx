@@ -1,6 +1,8 @@
+import { WorkoutType } from "./selection/workoutItemType";
+
 const placeHolderHistoryList = [
   {
-    type: "0",
+    type: WorkoutType.upper_1,
     excersize_1: "12kg 2, 4, 5",
     excersize_2: "12kg 2, 4, 5",
     excersize_3: "12kg 2, 4, 5",
@@ -11,7 +13,7 @@ const placeHolderHistoryList = [
     date: "26-9-2022",
   },
   {
-    type: "0",
+    type: WorkoutType.upper_1,
     excersize_1: "12kg 2, 4, 5",
     excersize_2: "12kg 2, 4, 5",
     excersize_3: "12kg 2, 4, 5",
@@ -22,7 +24,7 @@ const placeHolderHistoryList = [
     date: "26-9-2022",
   },
   {
-    type: "1",
+    type: WorkoutType.upper_2,
     excersize_1: "12kg 2, 4, 5",
     excersize_2: "12kg 2, 4, 5",
     excersize_3: "12kg 2, 4, 5",
@@ -34,7 +36,7 @@ const placeHolderHistoryList = [
   },
 
   {
-    type: "2",
+    type: WorkoutType.lower,
     excersize_1: "12kg 2, 4, 5",
     excersize_2: "12kg 2, 4, 5",
     excersize_3: "12kg 2, 4, 5",

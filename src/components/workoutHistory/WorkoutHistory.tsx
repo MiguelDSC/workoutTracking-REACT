@@ -1,10 +1,10 @@
 import React from "react";
-import WorkoutItemType from "../selection/workoutItemType";
+import WorkoutItemType, { WorkoutType } from "../selection/workoutItemType";
 import styles from "../workoutForm/WorkoutForm.module.css";
 import routine from "../Routine";
 
 interface WorkoutHistory {
-  type: string;
+  type: WorkoutType;
   workoutHistory: WorkoutItemType[];
 }
 

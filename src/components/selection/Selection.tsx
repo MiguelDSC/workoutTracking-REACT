@@ -1,15 +1,15 @@
 import styles from "./selection.module.css";
-import WorkoutTypeButton from "./WorkoutTypeButton";
+import { WorkoutType } from "./workoutItemType";
 
 interface SelectionProps {
-  onGetType: (data: string) => void;
+  onGetType: (data: number) => void;
   onHistoryToggle: () => void;
-  toggleEnabled?: boolean;
+  historyToggleEnabled?: boolean;
 }
 
 function Selection(props: SelectionProps) {
   const getTypeHandler = (data: string) => {
-    props.onGetType(data);
+    props.onGetType(+data);
   };
 
   const historyToggler = () => {
@@ -18,11 +18,35 @@ function Selection(props: SelectionProps) {
 
   return (
     <div className={styles.selection}>
-      <WorkoutTypeButton passValue={getTypeHandler} value="0" title="Upper 1" />
-      <WorkoutTypeButton passValue={getTypeHandler} value="1" title="Upper 2" />
-      <WorkoutTypeButton passValue={getTypeHandler} value="2" title="Lower" />
-      {props.toggleEnabled ? (
-        <button className={styles.isToggled} onClick={historyToggler}>
+      <button
+        className={styles.button}
+        onClick={(e) =>
+          getTypeHandler(e.currentTarget.getAttribute("value") || "")
+        }
+        value={WorkoutType.upper_1}
+      >
+        Upper 1
+      </button>
+      <button
+        className={styles.button}
+        onClick={(e) =>
+          getTypeHandler(e.currentTarget.getAttribute("value") || "")
+        }
+        value={WorkoutType.upper_2}
+      >
+        Upper 2
+      </button>
+      <button
+        className={styles.button}
+        onClick={(e) =>
+          getTypeHandler(e.currentTarget.getAttribute("value") || "")
+        }
+        value={WorkoutType.lower}
+      >
+        Lower
+      </button>
+      {props.historyToggleEnabled ? (
+        <button className={`${styles.button}`} onClick={historyToggler}>
           Toggle History
         </button>
       ) : (

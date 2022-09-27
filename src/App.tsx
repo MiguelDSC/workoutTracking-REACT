@@ -3,17 +3,19 @@ import WorkoutForm from "./components/workoutForm/WorkoutForm";
 import Selection from "./components/selection/Selection";
 import { useState } from "react";
 import WorkoutHistory from "./components/workoutHistory/WorkoutHistory";
-import WorkoutItemType from "./components/selection/workoutItemType";
+import WorkoutItemType, {
+  WorkoutType,
+} from "./components/selection/workoutItemType";
 import placeHolderHistoryList from "./components/PlaceHolderHistoryList";
 
 function App() {
-  const [selectedWorkout, setSelectedWorkout] = useState("0");
+  const [selectedWorkout, setSelectedWorkout] = useState(WorkoutType.upper_1);
   const [enableHistory, setEnableHistory] = useState(false);
   const [history, setHistory] = useState<WorkoutItemType[]>(
     placeHolderHistoryList
   );
 
-  const getTypeHandler = (data: string) => {
+  const getTypeHandler = (data: number) => {
     setSelectedWorkout(data);
   };
 
@@ -35,14 +37,14 @@ function App() {
       {/* selection upper 1, upper 2, lower */}
       <h1>Select a Workout</h1>
       <Selection
-        toggleEnabled={enableHistory}
+        historyToggleEnabled={enableHistory}
         onHistoryToggle={historyToggler}
         onGetType={getTypeHandler}
       />
-      <WorkoutForm onNewWorkout={newWorkoutHandler} type={selectedWorkout} />
+      <WorkoutForm onNewWorkout={newWorkoutHandler} type={+selectedWorkout} />
 
       {enableHistory && (
-        <WorkoutHistory type={selectedWorkout} workoutHistory={history} />
+        <WorkoutHistory type={+selectedWorkout} workoutHistory={history} />
       )}
     </div>
   );
