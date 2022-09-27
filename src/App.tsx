@@ -9,7 +9,9 @@ import WorkoutItemType, {
 import placeHolderHistoryList from "./components/PlaceHolderHistoryList";
 
 function App() {
-  const [selectedWorkout, setSelectedWorkout] = useState(WorkoutType.upper_1);
+  const [selectedWorkout, setSelectedWorkout] = useState<WorkoutType>(
+    WorkoutType.upper_1
+  );
   const [enableHistory, setEnableHistory] = useState(false);
   const [history, setHistory] = useState<WorkoutItemType[]>(
     placeHolderHistoryList
@@ -41,10 +43,10 @@ function App() {
         onHistoryToggle={historyToggler}
         onGetType={getTypeHandler}
       />
-      <WorkoutForm onNewWorkout={newWorkoutHandler} type={+selectedWorkout} />
+      <WorkoutForm onNewWorkout={newWorkoutHandler} type={selectedWorkout} />
 
       {enableHistory && (
-        <WorkoutHistory type={+selectedWorkout} workoutHistory={history} />
+        <WorkoutHistory type={selectedWorkout} workoutHistory={history} />
       )}
     </div>
   );

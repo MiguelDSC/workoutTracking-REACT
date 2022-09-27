@@ -8,6 +8,16 @@ interface WorkoutHistory {
   workoutHistory: WorkoutItemType[];
 }
 
+const convertDate = (date: Date) => {
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  // This arrangement can be altered based on how we want the date's format to appear.
+  let currentDate = `${day}-${month}-${year}`;
+  return currentDate;
+};
+
 function WorkoutHistory(props: WorkoutHistory) {
   const heading = routine[+props.type];
 
@@ -30,7 +40,7 @@ function WorkoutHistory(props: WorkoutHistory) {
         <tbody>
           {filteredHistory.map((item) => (
             <tr>
-              <td>{item.date}</td>
+              <td>{convertDate(item.date)}</td>
               <td>{item.excersize_1}</td>
               <td>{item.excersize_2}</td>
               <td>{item.excersize_3}</td>

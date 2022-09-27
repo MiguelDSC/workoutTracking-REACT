@@ -1,5 +1,3 @@
-import WorkoutTypeButton from "./WorkoutTypeButton";
-
 export enum WorkoutType {
   upper_1,
   upper_2,
@@ -15,7 +13,7 @@ interface WorkoutItemType {
   excersize_5: string;
   excersize_6?: string;
   excersize_7?: string;
-  date: string;
+  date: Date;
 }
 
 export default WorkoutItemType;

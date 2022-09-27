@@ -10,7 +10,7 @@ const placeHolderHistoryList = [
     excersize_5: "12kg 2, 4, 5",
     excersize_6: "12kg 2, 4, 5",
     excersize_7: "12kg 2, 4, 5",
-    date: "26-9-2022",
+    date: new Date(),
   },
   {
     type: WorkoutType.upper_1,
@@ -21,7 +21,7 @@ const placeHolderHistoryList = [
     excersize_5: "12kg 2, 4, 5",
     excersize_6: "12kg 2, 4, 5",
     excersize_7: "12kg 2, 4, 5",
-    date: "26-9-2022",
+    date: new Date(),
   },
   {
     type: WorkoutType.upper_2,
@@ -32,7 +32,7 @@ const placeHolderHistoryList = [
     excersize_5: "12kg 2, 4, 5",
     excersize_6: "12kg 2, 4, 5",
     excersize_7: "12kg 2, 4, 5",
-    date: "26-9-2022",
+    date: new Date(),
   },
 
   {
@@ -42,7 +42,7 @@ const placeHolderHistoryList = [
     excersize_3: "12kg 2, 4, 5",
     excersize_4: "12kg 2, 4, 5",
     excersize_5: "12kg 2, 4, 5",
-    date: "26-9-2022",
+    date: new Date(),
   },
 ];
 

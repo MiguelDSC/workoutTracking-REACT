@@ -8,18 +8,6 @@ interface WorkoutFormProps {
   onNewWorkout: (data: WorkoutItemType) => void;
 }
 
-const convertDate = () => {
-  const date = new Date();
-
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  // This arrangement can be altered based on how we want the date's format to appear.
-  let currentDate = `${day}-${month}-${year}`;
-  return currentDate;
-};
-
 function WorkoutForm(props: WorkoutFormProps) {
   const [workout, setWorkout] = useState({
     excersize_1: "",
@@ -42,27 +30,23 @@ function WorkoutForm(props: WorkoutFormProps) {
 
   let content;
 
-  if (props.type) {
-    const selectedWorkout = routine[+props.type];
+  const selectedWorkout = routine[props.type];
 
-    content = (
-      <tr>
-        {selectedWorkout.map((item) => (
-          <th key={item.toString()}>{item}</th>
-        ))}
-      </tr>
-    );
-  }
+  content = (
+    <tr>
+      {selectedWorkout.map((item) => (
+        <th key={item.toString()}>{item}</th>
+      ))}
+    </tr>
+  );
 
   const submitHandler = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const currentDate = convertDate();
-
     const newWorkout = {
       type: props.type,
       ...workout,
-      date: currentDate,
+      date: new Date(),
     };
 
     props.onNewWorkout(newWorkout);
@@ -81,81 +65,79 @@ function WorkoutForm(props: WorkoutFormProps) {
   return (
     <>
       {/* name, 4 inputs per exersize */}
-      {props.type && (
-        <form onSubmit={submitHandler}>
-          <table className={styles.table}>
-            <thead>{content}</thead>
+      <form onSubmit={submitHandler}>
+        <table className={styles.table}>
+          <thead>{content}</thead>
 
-            <tbody>
-              <tr>
-                <td>
-                  <input
-                    name="excersize_1"
-                    type="text"
-                    value={workout.excersize_1}
-                    onChange={workoutInputHandler}
-                  />
-                </td>
-                <td>
-                  <input
-                    name="excersize_2"
-                    type="text"
-                    value={workout.excersize_2}
-                    onChange={workoutInputHandler}
-                  />
-                </td>
-                <td>
-                  <input
-                    name="excersize_3"
-                    type="text"
-                    value={workout.excersize_3}
-                    onChange={workoutInputHandler}
-                  />
-                </td>
-                <td>
-                  <input
-                    name="excersize_4"
-                    type="text"
-                    value={workout.excersize_4}
-                    onChange={workoutInputHandler}
-                  />
-                </td>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  name="excersize_1"
+                  type="text"
+                  value={workout.excersize_1}
+                  onChange={workoutInputHandler}
+                />
+              </td>
+              <td>
+                <input
+                  name="excersize_2"
+                  type="text"
+                  value={workout.excersize_2}
+                  onChange={workoutInputHandler}
+                />
+              </td>
+              <td>
+                <input
+                  name="excersize_3"
+                  type="text"
+                  value={workout.excersize_3}
+                  onChange={workoutInputHandler}
+                />
+              </td>
+              <td>
+                <input
+                  name="excersize_4"
+                  type="text"
+                  value={workout.excersize_4}
+                  onChange={workoutInputHandler}
+                />
+              </td>
 
-                <td>
-                  <input
-                    name="excersize_5"
-                    type="text"
-                    value={workout.excersize_5}
-                    onChange={workoutInputHandler}
-                  />
-                </td>
+              <td>
+                <input
+                  name="excersize_5"
+                  type="text"
+                  value={workout.excersize_5}
+                  onChange={workoutInputHandler}
+                />
+              </td>
 
-                {props.type !== WorkoutType.lower && (
-                  <>
-                    <td>
-                      <input
-                        name="excersize_6"
-                        type="text"
-                        value={workout.excersize_6}
-                        onChange={workoutInputHandler}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        name="excersize_7"
-                        type="text"
-                        value={workout.excersize_7}
-                        onChange={workoutInputHandler}
-                      />
-                    </td>
-                  </>
-                )}
-              </tr>
-            </tbody>
-          </table>
-          <button type="submit">save Workout</button>
-        </form>
-      )}
+              {props.type !== WorkoutType.lower && (
+                <>
+                  <td>
+                    <input
+                      name="excersize_6"
+                      type="text"
+                      value={workout.excersize_6}
+                      onChange={workoutInputHandler}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      name="excersize_7"
+                      type="text"
+                      value={workout.excersize_7}
+                      onChange={workoutInputHandler}
+                    />
+                  </td>
+                </>
+              )}
+            </tr>
+          </tbody>
+        </table>
+        <button type="submit">save Workout</button>
+      </form>
     </>
   );
 }

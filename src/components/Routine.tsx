@@ -20,7 +20,7 @@ const routine = [
   [
     "Squats",
     "Assisted Pistol Squats",
-    "Romanian Deadlights",
+    "Romanian Deadlifts",
     "Nordic curls",
     "Goblin squats",
   ],

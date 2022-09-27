@@ -12,10 +12,6 @@ function Selection(props: SelectionProps) {
     props.onGetType(+data);
   };
 
-  const historyToggler = () => {
-    props.onHistoryToggle();
-  };
-
   return (
     <div className={styles.selection}>
       <button
@@ -45,13 +41,13 @@ function Selection(props: SelectionProps) {
       >
         Lower
       </button>
-      {props.historyToggleEnabled ? (
-        <button className={`${styles.button}`} onClick={historyToggler}>
-          Toggle History
-        </button>
-      ) : (
-        <button onClick={historyToggler}>Toggle History</button>
-      )}
+
+      <button
+        className={`${props.historyToggleEnabled && styles.button}`}
+        onClick={props.onHistoryToggle}
+      >
+        Toggle History
+      </button>
     </div>
   );
 }
