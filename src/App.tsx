@@ -4,72 +4,31 @@ import Selection from "./components/selection/Selection";
 import { useState } from "react";
 import WorkoutHistory from "./components/workoutHistory/WorkoutHistory";
 import WorkoutItemType from "./components/selection/workoutItemType";
+import placeHolderHistoryList from "./components/PlaceHolderHistoryList";
 
 function App() {
   const [selectedWorkout, setSelectedWorkout] = useState("0");
   const [enableHistory, setEnableHistory] = useState(false);
-  const [history, setHistory] = useState<WorkoutItemType[]>([
-    {
-      type: "0",
-      excersize_1: "12kg 2, 4, 5",
-      excersize_2: "12kg 2, 4, 5",
-      excersize_3: "12kg 2, 4, 5",
-      excersize_4: "12kg 2, 4, 5",
-      excersize_5: "12kg 2, 4, 5",
-      excersize_6: "12kg 2, 4, 5",
-      excersize_7: "12kg 2, 4, 5",
-      date: "26-9-2022",
-    },
-    {
-      type: "0",
-      excersize_1: "12kg 2, 4, 5",
-      excersize_2: "12kg 2, 4, 5",
-      excersize_3: "12kg 2, 4, 5",
-      excersize_4: "12kg 2, 4, 5",
-      excersize_5: "12kg 2, 4, 5",
-      excersize_6: "12kg 2, 4, 5",
-      excersize_7: "12kg 2, 4, 5",
-      date: "26-9-2022",
-    },
-    {
-      type: "1",
-      excersize_1: "12kg 2, 4, 5",
-      excersize_2: "12kg 2, 4, 5",
-      excersize_3: "12kg 2, 4, 5",
-      excersize_4: "12kg 2, 4, 5",
-      excersize_5: "12kg 2, 4, 5",
-      excersize_6: "12kg 2, 4, 5",
-      excersize_7: "12kg 2, 4, 5",
-      date: "26-9-2022",
-    },
+  const [history, setHistory] = useState<WorkoutItemType[]>(
+    placeHolderHistoryList
+  );
 
-    {
-      type: "2",
-      excersize_1: "12kg 2, 4, 5",
-      excersize_2: "12kg 2, 4, 5",
-      excersize_3: "12kg 2, 4, 5",
-      excersize_4: "12kg 2, 4, 5",
-      excersize_5: "12kg 2, 4, 5",
-      date: "26-9-2022",
-    },
-  ]);
-
-  function getTypeHandler(data: string) {
+  const getTypeHandler = (data: string) => {
     setSelectedWorkout(data);
-  }
+  };
 
-  function historyToggler() {
+  const historyToggler = () => {
     setEnableHistory(!enableHistory);
-  }
+  };
 
-  function newWorkoutHandler(data: WorkoutItemType) {
+  const newWorkoutHandler = (data: WorkoutItemType) => {
     setHistory((prevWorkoutList) => {
       const oldWorkouts = [...prevWorkoutList];
       oldWorkouts.unshift(data);
 
       return oldWorkouts;
     });
-  }
+  };
 
   return (
     <div className="App">

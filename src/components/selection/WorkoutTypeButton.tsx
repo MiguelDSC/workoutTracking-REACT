@@ -8,14 +8,9 @@ interface WorkoutTypeButton {
 }
 
 function WorkoutTypeButton(props: WorkoutTypeButton) {
-  function clickHandler(event: MouseEvent<HTMLElement>) {
-    // console.log(event.target.value);
-    console.log(event.currentTarget.getAttribute("value"));
-
-    // props.passValue(event.target.value);
-
+  const clickHandler = (event: MouseEvent<HTMLElement>) => {
     props.passValue(event.currentTarget.getAttribute("value") || "");
-  }
+  };
 
   return (
     <button

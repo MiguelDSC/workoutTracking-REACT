@@ -20,7 +20,7 @@ function WorkoutForm(props: WorkoutFormProps) {
     date: "",
   });
 
-  function convertDate() {
+  const convertDate = () => {
     const date = new Date();
 
     let day = date.getDate();
@@ -30,15 +30,15 @@ function WorkoutForm(props: WorkoutFormProps) {
     // This arrangement can be altered based on how we want the date's format to appear.
     let currentDate = `${day}-${month}-${year}`;
     return currentDate;
-  }
+  };
 
-  function workoutInputHandler(event: ChangeEvent<HTMLInputElement>) {
+  const workoutInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setWorkout({
       ...workout,
       [event.target.name]: value,
     });
-  }
+  };
 
   let content;
 
@@ -54,11 +54,10 @@ function WorkoutForm(props: WorkoutFormProps) {
     );
   }
 
-  function submitHandler(event: ChangeEvent<HTMLFormElement>) {
+  const submitHandler = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const currentDate = convertDate();
-
     const newWorkout = {
       type: props.type,
       ...workout,
@@ -76,7 +75,7 @@ function WorkoutForm(props: WorkoutFormProps) {
       excersize_7: "",
       date: "",
     });
-  }
+  };
 
   return (
     <>
@@ -161,68 +160,3 @@ function WorkoutForm(props: WorkoutFormProps) {
 }
 
 export default WorkoutForm;
-
-// const routine = [
-//   {
-//     id: "upper_1",
-//     exercise_1: {
-//       title: "Dips",
-//       values: ["5kg 12, 10, 8"],
-//     },
-//     exercise_2: {
-//       title: "Rows",
-//       values: ["5kg 12, 10, 8"],
-//     },
-//     exercise_3: {
-//       title: "Ring Push Ups",
-//       values: ["5kg 12, 10, 8"],
-//     },
-//     exercise_4: {
-//       title: "Chin Ups",
-//       values: ["5kg 12, 10, 8"],
-//     },
-//     exercise_5: {
-//       title: "Side Raises",
-//       values: ["5kg 12, 10, 8"],
-//     },
-//     exercise_6: {
-//       title: "Curls",
-//       values: ["5kg 12, 10, 8"],
-//     },
-//     exercise_7: {
-//       title: "Tricep Extentions",
-//       values: ["5kg 12, 10, 8"],
-//     },
-//   },
-//   {
-//     id: "upper_2",
-//     exercise_1: {
-//       title: "Pull Ups",
-//       values: [],
-//     },
-//     exercise_2: {
-//       title: "Ring Push Ups",
-//       values: [],
-//     },
-//     exercise_3: {
-//       title: "Rows",
-//       values: [],
-//     },
-//     exercise_4: {
-//       title: "Overhead Press",
-//       values: [],
-//     },
-//     exercise_5: {
-//       title: "Side Raises",
-//       values: [],
-//     },
-//     exercise_6: {
-//       title: "Hammer Curls",
-//       values: [],
-//     },
-//     exercise_7: {
-//       title: "Tricep Extentions",
-//       values: [],
-//     },
-//   },
-// ];

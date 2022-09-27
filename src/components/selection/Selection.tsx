@@ -1,5 +1,3 @@
-import React, { ChangeEvent } from "react";
-import Button from "./WorkoutTypeButton";
 import styles from "./selection.module.css";
 import WorkoutTypeButton from "./WorkoutTypeButton";
 
@@ -10,13 +8,13 @@ interface SelectionProps {
 }
 
 function Selection(props: SelectionProps) {
-  function getTypeHandler(data: string) {
+  const getTypeHandler = (data: string) => {
     props.onGetType(data);
-  }
+  };
 
-  function historyToggler() {
+  const historyToggler = () => {
     props.onHistoryToggle();
-  }
+  };
 
   return (
     <div className={styles.selection}>

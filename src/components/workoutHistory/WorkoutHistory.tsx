@@ -4,7 +4,6 @@ import styles from "../workoutForm/WorkoutForm.module.css";
 import routine from "../Routine";
 
 interface WorkoutHistory {
-  //   toggleHistory: boolean;
   type: string;
   workoutHistory: WorkoutItemType[];
 }
