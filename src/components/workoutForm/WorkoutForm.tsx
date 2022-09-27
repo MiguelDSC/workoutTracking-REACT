@@ -1,14 +1,14 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import styles from "./WorkoutForm.module.css";
-import workoutItemType from "../selection/workoutItemType";
+import WorkoutItemType from "../selection/workoutItemType";
 import routine from "../Routine";
 
-interface workoutFormProps {
+interface WorkoutFormProps {
   type: string;
-  onNewWorkout: (data: workoutItemType) => void;
+  onNewWorkout: (data: WorkoutItemType) => void;
 }
 
-function WorkoutForm(props: workoutFormProps) {
+function WorkoutForm(props: WorkoutFormProps) {
   const [workout, setWorkout] = useState({
     excersize_1: "",
     excersize_2: "",

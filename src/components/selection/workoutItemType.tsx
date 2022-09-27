@@ -1,4 +1,4 @@
-interface workoutItemType {
+interface WorkoutItemType {
   type: string;
   excersize_1: string;
   excersize_2: string;
@@ -10,4 +10,4 @@ interface workoutItemType {
   date: string;
 }
 
-export default workoutItemType;
+export default WorkoutItemType;

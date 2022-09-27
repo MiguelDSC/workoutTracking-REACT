@@ -1,12 +1,12 @@
 import React from "react";
-import workoutItemType from "../selection/workoutItemType";
+import WorkoutItemType from "../selection/workoutItemType";
 import styles from "../workoutForm/WorkoutForm.module.css";
 import routine from "../Routine";
 
 interface WorkoutHistory {
   //   toggleHistory: boolean;
   type: string;
-  workoutHistory: workoutItemType[];
+  workoutHistory: WorkoutItemType[];
 }
 
 function WorkoutHistory(props: WorkoutHistory) {

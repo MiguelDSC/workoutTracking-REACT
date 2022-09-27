@@ -5,8 +5,8 @@ import WorkoutTypeButton from "./WorkoutTypeButton";
 
 interface SelectionProps {
   onGetType: (data: string) => void;
-  onToggle: () => void;
-  ToggleEnabled?: boolean;
+  onHistoryToggle: () => void;
+  toggleEnabled?: boolean;
 }
 
 function Selection(props: SelectionProps) {
@@ -15,7 +15,7 @@ function Selection(props: SelectionProps) {
   }
 
   function historyToggler() {
-    props.onToggle();
+    props.onHistoryToggle();
   }
 
   return (
@@ -23,7 +23,7 @@ function Selection(props: SelectionProps) {
       <WorkoutTypeButton passValue={getTypeHandler} value="0" title="Upper 1" />
       <WorkoutTypeButton passValue={getTypeHandler} value="1" title="Upper 2" />
       <WorkoutTypeButton passValue={getTypeHandler} value="2" title="Lower" />
-      {props.ToggleEnabled ? (
+      {props.toggleEnabled ? (
         <button className={styles.isToggled} onClick={historyToggler}>
           Toggle History
         </button>
