@@ -10,7 +10,7 @@ import placeHolderHistoryList from "./components/PlaceHolderHistoryList";
 
 function App() {
   const [selectedWorkout, setSelectedWorkout] = useState<WorkoutType>(
-    WorkoutType.upper_1
+    WorkoutType.upper_2
   );
   const [enableHistory, setEnableHistory] = useState(false);
   const [history, setHistory] = useState<WorkoutItemType[]>(
@@ -32,18 +32,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* selection upper 1, upper 2, lower */}
+      {/* selection upper 1, upper 2, lower
       <h1>Select a Workout</h1>
       <WorkoutTypeSelector
         historyToggleEnabled={enableHistory}
         onHistoryToggle={toggleHistory}
         onChangeWorkout={setSelectedWorkout}
-      />
+      /> */}
       <WorkoutForm onNewWorkout={newWorkoutHandler} type={selectedWorkout} />
-
+      {/* 
       {enableHistory && (
         <WorkoutHistory type={selectedWorkout} workoutHistory={history} />
-      )}
+      )} */}
     </div>
   );
 }
