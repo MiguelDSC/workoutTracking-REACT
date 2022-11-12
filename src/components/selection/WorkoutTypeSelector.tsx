@@ -1,8 +1,15 @@
 import styles from "./WorkoutTypeSelector.module.css";
-import { WorkoutType } from "./workoutItemType";
+import WorkoutType from "../PlaceHolderHistoryList";
+
+import {
+  upper_1_routine,
+  upper_2_routine,
+  lower_routine,
+  WorkoutRoutineNames,
+} from "./WorkoutItemType";
 
 interface SelectionProps {
-  onChangeWorkout: (data: number) => void;
+  onChangeWorkout: (selectedWorkout: WorkoutRoutineNames) => void;
   onHistoryToggle: () => void;
   historyToggleEnabled?: boolean;
 }
@@ -13,7 +20,7 @@ function WorkoutTypeSelector(props: SelectionProps) {
       <button
         className={styles.button}
         onClick={() => {
-          props.onChangeWorkout(WorkoutType.upper_1);
+          props.onChangeWorkout(upper_1_routine);
         }}
       >
         Upper 1
@@ -21,7 +28,7 @@ function WorkoutTypeSelector(props: SelectionProps) {
       <button
         className={styles.button}
         onClick={() => {
-          props.onChangeWorkout(WorkoutType.upper_2);
+          props.onChangeWorkout(upper_2_routine);
         }}
       >
         Upper 2
@@ -29,7 +36,7 @@ function WorkoutTypeSelector(props: SelectionProps) {
       <button
         className={styles.button}
         onClick={() => {
-          props.onChangeWorkout(WorkoutType.lower);
+          props.onChangeWorkout(lower_routine);
         }}
       >
         Lower

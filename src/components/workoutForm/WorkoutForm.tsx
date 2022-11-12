@@ -1,11 +1,11 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import styles from "./WorkoutForm.module.css";
-import WorkoutItemType, { WorkoutType } from "../selection/workoutItemType";
-import routine from "../Routine";
+import WorkoutItemType from "../selection/WorkoutItemType";
+import { WorkoutType, WorkoutRoutineNames } from "../selection/WorkoutItemType";
 
 interface WorkoutFormProps {
-  type: WorkoutType;
-  onNewWorkout: (data: WorkoutItemType) => void;
+  currentWorkout: WorkoutRoutineNames;
+  onNewWorkout: (newWorkout: WorkoutItemType) => void;
 }
 
 function WorkoutForm(props: WorkoutFormProps) {
@@ -30,12 +30,20 @@ function WorkoutForm(props: WorkoutFormProps) {
 
   let content;
 
-  const selectedWorkout = routine[props.type];
+  const selectedWorkout = [];
+
+  for (const [key, value] of Object.entries(props.currentWorkout)) {
+    if (key !== "type") {
+      selectedWorkout.push(value);
+    }
+  }
+
+  console.log(selectedWorkout);
 
   content = (
     <tr>
       {selectedWorkout.map((item) => (
-        <th key={item.toString()}>{item}</th>
+        <th key={item}>{item}</th>
       ))}
     </tr>
   );
@@ -44,22 +52,26 @@ function WorkoutForm(props: WorkoutFormProps) {
     event.preventDefault();
 
     const newWorkout = {
-      type: props.type,
+      type: props.currentWorkout.type,
       ...workout,
       date: new Date(),
     };
 
-    props.onNewWorkout(newWorkout);
-    setWorkout({
-      excersize_1: "",
-      excersize_2: "",
-      excersize_3: "",
-      excersize_4: "",
-      excersize_5: "",
-      excersize_6: "",
-      excersize_7: "",
-      date: "",
-    });
+    // props.onNewWorkout(newWorkout);
+    // setWorkout({
+    //   excersize_1: {
+    //     name: props.currentWorkout.excersize_1,
+    //     data: [newWorkout.excersize_1],
+    //   },
+
+    //   excersize_2: "",
+    //   excersize_3: "",
+    //   excersize_4: "",
+    //   excersize_5: "",
+    //   excersize_6: "",
+    //   excersize_7: "",
+    //   date: "",
+    // });
   };
 
   return (
@@ -113,7 +125,7 @@ function WorkoutForm(props: WorkoutFormProps) {
                 />
               </td>
 
-              {props.type !== WorkoutType.lower && (
+              {props.currentWorkout.type !== WorkoutType.lower && (
                 <>
                   <td>
                     <input
